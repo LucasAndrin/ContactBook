@@ -18,8 +18,8 @@ public class PersonControllerXML {
         this.personServiceXML = personServiceXML;
     }
 
-    @GetMapping("/personxml")
-    public Optional<Person> getPerson(@PathVariable("{personId}") Long personId) {
+    @GetMapping("/personxml/{personId}")
+    public Optional<Person> getPerson(@PathVariable Long personId) {
         return personServiceXML.getPerson(personId);
     }
 
@@ -33,13 +33,13 @@ public class PersonControllerXML {
         personServiceXML.addNewPerson(person);
     }
 
-    @DeleteMapping("/personxml")
-    public void deletePerson(@PathVariable("{personId}") Long personId) {
+    @DeleteMapping("/personxml/{personId}")
+    public void deletePerson(@PathVariable Long personId) {
         personServiceXML.deletePerson(personId);
     }
 
-    @PutMapping("/personxml")
-    public void updatePerson(@PathVariable("{personId}") Long personId, @RequestBody Person person) {
+    @PutMapping("/personxml/{personId}")
+    public void updatePerson(@PathVariable Long personId, @RequestBody Person person) {
         personServiceXML.updatePerson(personId, person);
     }
 }

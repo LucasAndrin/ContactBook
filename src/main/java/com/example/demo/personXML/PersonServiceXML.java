@@ -26,8 +26,18 @@ public class PersonServiceXML {
         return personRepositoryXML.findAll();
     }
 
+    public void addNewPerson(Person person) {
+        personRepositoryXML.save(person);
+    }
+
     public void deletePerson(Long personId) {
-        personRepositoryXML.deleteById(personId);
+        Optional<Person> person = Optional.of(personRepositoryXML.findById(personId))
+                        .orElseThrow(() -> new IllegalArgumentException(
+                           "Person with id " + personId + " does not exists"
+                        ));
+        if(person.isPresent()) {
+            personRepositoryXML.deleteById(personId);
+        }
     }
 
     @Transactional
@@ -36,24 +46,6 @@ public class PersonServiceXML {
                 .orElseThrow(() -> new IllegalArgumentException(
                         "Person with id " + personId + " does not exists"
                 ));
-        if(person.equals(personDB)){
-            return;
-        }
-
-        if(person.getName() != null && !person.getName().isBlank()) {
-            personDB.setName(person.getName());
-        }
-
-        if(person.getDob() != null) {
-            personDB.setDob(person.getDob());
-        }
-
-        if(person.getEmail() != null && !person.getEmail().isBlank()) {
-            personDB.setEmail(person.getEmail());
-        }
-
-        if(person.getTelephone() != null && !person.getTelephone().isBlank()) {
-            personDB.setTelephone(person.getTelephone());
-        }
+        personRepositoryXML.updatePerson(personId, person);
     }
 }
