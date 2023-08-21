@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<people>
+    
+    <person>
+        <id>0</id>
+        <name>luis</name>
+        <email>luis@gmail.com</email>
+        <tel>4002-8922</tel>
+        <dob>2003-05-27</dob>
+    </person>
+    <person>
+        <id>2</id>
+        <name>luis</name>
+        <email>luis@gmail.com</email>
+        <tel>4002-8922</tel>
+        <dob>2003-05-27</dob>
+    </person>
+</people>

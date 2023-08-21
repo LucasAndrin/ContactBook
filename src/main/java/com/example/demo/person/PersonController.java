@@ -32,13 +32,13 @@ public class PersonController {
         personService.addNewPerson(person);
     }
 
-    @PutMapping("/person")
+    @PutMapping(path = "{personId}")
     public void updatePerson(@PathVariable Long personId, @RequestBody Person person) {
         personService.updatePerson(personId, person);
     }
 
-    @DeleteMapping("/person")
-    public void deletePerson(@PathVariable Long personId) {
+    @DeleteMapping(path = "{personId}")
+    public void deletePerson(@PathVariable() Long personId) {
         personService.deletePerson(personId);
     }
 
