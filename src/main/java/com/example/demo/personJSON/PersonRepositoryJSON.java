@@ -1,6 +1,7 @@
 package com.example.demo.personJSON;
 
 import com.example.demo.person.Person;
+import com.example.demo.person.PersonRepositoryInterface;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 @Repository
-public class PersonRepositoryJSON {
+public class PersonRepositoryJSON implements PersonRepositoryInterface {
 
     private static final String fileName = "src/main/java/com/example/demo/personJSON/data.json";
 
@@ -54,7 +55,7 @@ public class PersonRepositoryJSON {
                 person.setId((Long) personMap.get("id"));
                 person.setName((String) personMap.get("name"));
                 person.setEmail((String) personMap.get("email"));
-                person.setTelephone((String) personMap.get("telepone"));
+                person.setTelephone((String) personMap.get("telephone"));
                 person.setDob(LocalDate.parse((String) personMap.get("dob")));
 
                 persons.add(person);
@@ -66,7 +67,7 @@ public class PersonRepositoryJSON {
         return persons;
     }
 
-    public Optional<Person> getPerson(Long id) {
+    public Optional<Person> findById(Long id) {
         try {
             for (Map<String, Object> personMap : (Iterable<Map<String, Object>>) getPersonsJSONArray()) {
                 Long currentId = (Long) personMap.get("id");
@@ -75,7 +76,7 @@ public class PersonRepositoryJSON {
                     person.setId(currentId);
                     person.setName((String) personMap.get("name"));
                     person.setEmail((String) personMap.get("email"));
-                    person.setTelephone((String) personMap.get("telepone"));
+                    person.setTelephone((String) personMap.get("telephone"));
                     person.setDob(LocalDate.parse((String) personMap.get("dob")));
 
                     return Optional.of(person);
@@ -88,7 +89,8 @@ public class PersonRepositoryJSON {
         return Optional.empty();
     }
 
-    public void createPerson(Person person) {
+    @Override
+    public void save(Person person) {
         try {
             JSONObject obj = getJSON();
 
@@ -112,6 +114,7 @@ public class PersonRepositoryJSON {
         }
     }
 
+    @Override
     public void updatePerson(Long personId, Person person) {
         try {
             JSONObject obj = getJSON();
@@ -150,7 +153,8 @@ public class PersonRepositoryJSON {
         }
     }
 
-    public void deletePerson(Long personId) {
+    @Override
+    public void deleteById(Long personId) {
         try {
             JSONObject obj = getJSON();
 

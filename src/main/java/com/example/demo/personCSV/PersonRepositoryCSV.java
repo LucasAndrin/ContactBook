@@ -1,6 +1,7 @@
 package com.example.demo.personCSV;
 
 import com.example.demo.person.Person;
+import com.example.demo.person.PersonRepositoryInterface;
 import com.opencsv.CSVReader;
 import com.opencsv.CSVWriter;
 import org.springframework.stereotype.Repository;
@@ -13,7 +14,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Repository
-public class PersonRepositoryCSV {
+public class PersonRepositoryCSV  implements PersonRepositoryInterface {
 
     private static final String fileName = "src/main/java/com/example/demo/personCSV/data.csv";
 
@@ -23,6 +24,7 @@ public class PersonRepositoryCSV {
      *
      * @return List<Person>
      */
+    @Override
     public List<Person> findAll() {
 
         List<Person> persons = new ArrayList<>();
@@ -52,6 +54,7 @@ public class PersonRepositoryCSV {
      *
      * @param person Person
      */
+    @Override
     public void save(Person person) {
         File file = new File(fileName);
 
@@ -116,6 +119,7 @@ public class PersonRepositoryCSV {
      * @param personId Long
      * @param person Person
      */
+    @Override
     public void updatePerson(Long personId, Person person) {
         try (CSVReader reader = new CSVReader(new FileReader(fileName), ',')) {
             List<String[]> csvBody = reader.readAll();
@@ -144,6 +148,7 @@ public class PersonRepositoryCSV {
      *
      * @param personId Long
      */
+    @Override
     public void deleteById(Long personId) {
         try (CSVReader reader = new CSVReader(new FileReader(fileName), ',')) {
             List<String[]> csvBody = reader.readAll();
@@ -171,6 +176,7 @@ public class PersonRepositoryCSV {
      * @param personId Long
      * @return Optional<Person>
      */
+    @Override
     public Optional<Person> findById(Long personId) {
         Optional<Person> personOptional = null;
 
