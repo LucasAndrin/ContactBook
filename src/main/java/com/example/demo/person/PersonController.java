@@ -17,7 +17,7 @@ public class PersonController {
         this.personService = personService;
     }
 
-    @GetMapping("/person")
+    @GetMapping("/person/{personId}")
     public Optional<Person> getPerson(@PathVariable Long personId) {
         return personService.getPerson(personId);
     }
@@ -32,15 +32,13 @@ public class PersonController {
         personService.addNewPerson(person);
     }
 
-    @PutMapping(path = "{personId}")
+    @PutMapping("/person/{personId}")
     public void updatePerson(@PathVariable Long personId, @RequestBody Person person) {
         personService.updatePerson(personId, person);
     }
 
-    @DeleteMapping(path = "{personId}")
-    public void deletePerson(@PathVariable() Long personId) {
+    @DeleteMapping("/person/{personId}")
+    public void deletePerson(@PathVariable Long personId) {
         personService.deletePerson(personId);
     }
-
-
 }
