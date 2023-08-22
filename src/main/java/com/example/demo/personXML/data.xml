@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<people>
+<?xml version="1.0" encoding="UTF-8" standalone="no"?><people>
             
     
     
@@ -24,4 +23,4 @@
     </person>
         
 
-</people>
+<person><id>5</id><name>gianzao</name><email>bonito@gmail.com</email><tel>4002-8922</tel><dob>2003-05-27</dob></person></people>

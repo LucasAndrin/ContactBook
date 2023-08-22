@@ -1,12 +1,1 @@
-{
-  "persons": [
-    {
-      "dob": "2003-07-04",
-      "name": "Lucas Andrin",
-      "telephone": "(47) 99629-8047",
-      "id": 1,
-      "email": "lucas@gmail.com"
-    }
-  ],
-  "nextId": 2
-}
+{"persons":[{"dob":"2003-07-04","name":"Lucas Andrin","telephone":"(47) 99629-8047","id":1,"email":"lucas@gmail.com"},{"dob":"2003-05-27","name":"gianzao","telephone":"4002-8922","id":2,"email":"bonito@gmail.com"},{"dob":"2003-05-27","name":"luis","telephone":"4002-8922","id":3,"email":"bonito@gmail.com"},{"dob":"2003-05-27","name":"bolinha","telephone":"4002-8922","id":4,"email":"bonito@gmail.com"}],"nextId":5}

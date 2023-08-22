@@ -56,7 +56,7 @@ public class PersonRepositoryJSON implements PersonRepositoryInterface {
                 person.setId((Long) personMap.get("id"));
                 person.setName((String) personMap.get("name"));
                 person.setEmail((String) personMap.get("email"));
-                person.setTelephone((String) personMap.get("telepone"));
+                person.setTelephone((String) personMap.get("telephone"));
                 person.setDob(LocalDate.parse((String) personMap.get("dob")));
 
                 persons.add(person);
@@ -78,7 +78,7 @@ public class PersonRepositoryJSON implements PersonRepositoryInterface {
                     person.setId(currentId);
                     person.setName((String) personMap.get("name"));
                     person.setEmail((String) personMap.get("email"));
-                    person.setTelephone((String) personMap.get("telepone"));
+                    person.setTelephone((String) personMap.get("telephone"));
                     person.setDob(LocalDate.parse((String) personMap.get("dob")));
 
                     return Optional.of(person);
