@@ -1,5 +1,6 @@
 package com.example.demo.person;
 
+import jakarta.transaction.Transactional;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -40,6 +41,7 @@ public class PersonService {
         personRepository.deleteById(personId);
     }
 
+    @Transactional
     public void updatePerson(Long personId, Person person) {
         Person personDB = personRepository.findById(personId)
                 .orElseThrow(() -> new IllegalArgumentException(
