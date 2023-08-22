@@ -42,10 +42,10 @@ public class PersonRepositoryXML {
             doc.getDocumentElement().normalize();
 
             NodeList list = doc.getElementsByTagName("person");
-            for(int i = 0; i < list.getLength(); i++){
+            for (int i = 0; i < list.getLength(); i++) {
                 Node node = list.item(i);
 
-                if(node.getNodeType() == Node.ELEMENT_NODE) {
+                if (node.getNodeType() == Node.ELEMENT_NODE) {
                     Element element = (Element) node;
 
                     Person person = new Person();
