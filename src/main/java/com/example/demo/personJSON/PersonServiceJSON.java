@@ -22,18 +22,18 @@ public class PersonServiceJSON {
     }
 
     public Optional<Person> getPerson(Long personId) {
-        return personRepositoryJSON.getPerson(personId);
+        return personRepositoryJSON.findById(personId);
     }
 
 
     public void createPerson(Person person) {
-        personRepositoryJSON.createPerson(person);
+        personRepositoryJSON.save(person);
     }
     public void updatePerson(Long personId, Person person) {
         personRepositoryJSON.updatePerson(personId, person);
     }
 
     public void deletePerson(Long personId) {
-        personRepositoryJSON.deletePerson(personId);
+        personRepositoryJSON.deleteById(personId);
     }
 }

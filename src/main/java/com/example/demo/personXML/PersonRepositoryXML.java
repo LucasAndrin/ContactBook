@@ -15,6 +15,7 @@ import javax.xml.transform.*;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
 
+import com.example.demo.person.PersonRepositoryInterface;
 import org.springframework.stereotype.Repository;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
@@ -23,7 +24,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 @Repository
-public class PersonRepositoryXML {
+public class PersonRepositoryXML implements PersonRepositoryInterface {
 
     private static final String fileName = "src/main/java/com/example/demo/personXML/data.xml";
 
@@ -32,6 +33,7 @@ public class PersonRepositoryXML {
      *
      * @return List<Person>
      */
+    @Override
      public List<Person> findAll() {
          DocumentBuilderFactory DomFac = DocumentBuilderFactory.newInstance();
          List<Person> persons = new ArrayList<>();
@@ -73,6 +75,7 @@ public class PersonRepositoryXML {
      * @param personId Long - personId
      * @return Optional<Person>
      */
+    @Override
      public Optional<Person> findById(Long personId) {
         DocumentBuilderFactory DomFac = DocumentBuilderFactory.newInstance();
 
@@ -118,6 +121,7 @@ public class PersonRepositoryXML {
      *
      * @param person Person
      */
+    @Override
     public void save(Person person) {
         try {
             File xmlFile = new File(fileName);
@@ -170,6 +174,7 @@ public class PersonRepositoryXML {
          return node;
      }
 
+    @Override
     public void deleteById(Long personId) {
         DocumentBuilderFactory DomFac = DocumentBuilderFactory.newInstance();
 
@@ -259,6 +264,7 @@ public class PersonRepositoryXML {
         return nextId + 1;
     }
 
+    @Override
     public void updatePerson(Long personId,Person updatedPerson) {
         DocumentBuilderFactory domFactory = DocumentBuilderFactory.newInstance();
 

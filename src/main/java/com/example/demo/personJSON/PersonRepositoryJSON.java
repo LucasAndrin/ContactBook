@@ -1,6 +1,7 @@
 package com.example.demo.personJSON;
 
 import com.example.demo.person.Person;
+import com.example.demo.person.PersonRepositoryInterface;
 import org.json.simple.JSONArray;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
@@ -12,7 +13,7 @@ import java.time.LocalDate;
 import java.util.*;
 
 @Repository
-public class PersonRepositoryJSON {
+public class PersonRepositoryJSON implements PersonRepositoryInterface {
 
     private static final String fileName = "src/main/java/com/example/demo/personJSON/data.json";
 
@@ -44,6 +45,7 @@ public class PersonRepositoryJSON {
         file.close();
     }
 
+    @Override
     public List<Person> findAll() {
         List<Person> persons = new ArrayList<>();
 
@@ -66,7 +68,8 @@ public class PersonRepositoryJSON {
         return persons;
     }
 
-    public Optional<Person> getPerson(Long id) {
+    @Override
+    public Optional<Person> findById(Long id) {
         try {
             for (Map<String, Object> personMap : (Iterable<Map<String, Object>>) getPersonsJSONArray()) {
                 Long currentId = (Long) personMap.get("id");
@@ -88,7 +91,8 @@ public class PersonRepositoryJSON {
         return Optional.empty();
     }
 
-    public void createPerson(Person person) {
+    @Override
+    public void save(Person person) {
         try {
             JSONObject obj = getJSON();
 
@@ -112,6 +116,7 @@ public class PersonRepositoryJSON {
         }
     }
 
+    @Override
     public void updatePerson(Long personId, Person person) {
         try {
             JSONObject obj = getJSON();
@@ -150,7 +155,8 @@ public class PersonRepositoryJSON {
         }
     }
 
-    public void deletePerson(Long personId) {
+    @Override
+    public void deleteById(Long personId) {
         try {
             JSONObject obj = getJSON();
 
