@@ -104,7 +104,6 @@ public class PersonRepositoryJSON implements PersonRepositoryInterface {
             obj.put("nextId", nextId + 1);
 
             FileWriter file = new FileWriter(fileName);
-            System.out.println(obj.toJSONString());
             file.write(obj.toJSONString());
             file.flush();
             file.close();
@@ -138,12 +137,7 @@ public class PersonRepositoryJSON implements PersonRepositoryInterface {
                 }
             }
 
-            System.out.println(obj);
-            System.out.println(persons);
-
             obj.put("persons", persons);
-
-            System.out.println(obj.toJSONString());
 
             setPersonsJSON(obj.toJSONString());
         } catch (IOException e) {
